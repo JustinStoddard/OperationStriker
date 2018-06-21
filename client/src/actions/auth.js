@@ -39,7 +39,7 @@ export const handleLogout = history => {
         dispatch(setHeaders(headers));
         dispatch(logout());
         dispatch(setFlash('Logged out successfully!', 'green'));
-        history.push('/login');
+        history.push('/');
       })
       .catch(res => {
         const messages =
@@ -59,6 +59,7 @@ export const handleLogin = (email, password, history) => {
         const { data: { data: user }, headers } = res;
         dispatch(setHeaders(headers));
         dispatch(login(user));
+        dispatch(setFlash('Logged In successfully!', 'green'));
         history.push('/');
       })
       .catch(res => {
